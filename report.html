@@ -150,42 +150,6 @@
                 <div id="submitMessage" style="margin-top: 20px; padding: 15px; border-radius: 4px; display: none;"></div>
             </form>
 
-            <div class="classification-box" style="margin-top: 30px; background: rgba(40, 40, 40, 0.5);">
-                <h3>Google Sheets Setup Instructions</h3>
-                <p><strong>To connect this form to Google Sheets:</strong></p>
-                <ol style="margin-left: 20px; line-height: 2;">
-                    <li>Go to <a href="https://script.google.com" target="_blank" style="color: #ffffff;">script.google.com</a></li>
-                    <li>Create a new project</li>
-                    <li>Paste the Google Apps Script code (see below)</li>
-                    <li>Deploy as Web App</li>
-                    <li>Copy the Web App URL</li>
-                    <li>Replace "YOUR_SCRIPT_URL_HERE" in the JavaScript below with your URL</li>
-                </ol>
-                <p style="margin-top: 15px;"><strong>Google Apps Script Code:</strong></p>
-                <pre style="background: #000; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 0.85rem; color: #0f0;">
-function doPost(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  var data = JSON.parse(e.postData.contents);
-  
-  sheet.appendRow([
-    new Date(),
-    data.reportType,
-    data.urgencyLevel,
-    data.reporterName,
-    data.personnelId,
-    data.siteAssignment,
-    data.contactMethod,
-    data.incidentDetails,
-    data.submitAnonymous
-  ]);
-  
-  return ContentService.createTextOutput(JSON.stringify({success: true}))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-                </pre>
-            </div>
-        </div>
-
         <h2>What Happens Next?</h2>
         <div class="classification-box">
             <h3>Report Processing</h3>
@@ -280,4 +244,5 @@ function doPost(e) {
     </script>
     <script src="script.js"></script>
 </body>
+
 </html>
